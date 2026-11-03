@@ -59,6 +59,27 @@ The arcade games are standalone.
 Not yet tested against a live cluster: the code was checked with a mock RPC only. Try a small devnet launch and trade before moving to mainnet.
 Rigor scores are AI estimates, not proof checks.
 
+## On-chain records
+
+Everything below is public and can be checked on Solana Explorer. Theorema has no token, program or upgrade authority of its own. Every coin is a pump.fun coin, and Theorema only adds a launch tag and a memo that records the theorem.
+
+### Mainnet
+
+- pump.fun program used for every launch: https://explorer.solana.com/address/6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P
+- Launch tag address (the marker transactions reference it, and the market reads it to discover Theorema launches): https://explorer.solana.com/address/8ZabDiS386zXpS2yYV253iEG1a1VmQ6hFGjCoj5rJtZA
+- Creator and fee-paying wallet of the demo launch: https://explorer.solana.com/address/41us3NZBQ1du85iJEBxzddB6o4pw7TfymPZmR6dju5bu
+
+Demo launch, 3 Nov 2026 (UTC). Coin: $EUCLID (Euclid's Primes). Theorem: "For every natural number n, there exists a prime number p such that p > n."
+
+- Coin (mint): https://explorer.solana.com/address/4o1pkcXkVApwhsvDALbFYRJkNYEA8v2FZ221ZsvsizWv
+- Theorem marker transaction (memo): https://explorer.solana.com/tx/GWfwJFUpTns8oYkzHHsntgsPNtjpSkTXed5fhP5qxghRS6z3oGz8jH8sbLm8hBD73rTSxnCKtvAzfLEtcEGbY9w
+- Coin creation transaction: https://explorer.solana.com/tx/u4aJuhrCUf47xihZExDGepXgc2vnw4D4x2erNE3H9qQ7RDp9YpcfFNrFwRYhQvt5C8Y4mbmzgt1aKGmFZPz5JMq
+- First buy: https://explorer.solana.com/tx/4k1izDHoZRb3wGcV9ZweLq7TZg22PGUBtKtN1DarrcnRb2b23LFFHWNvkAsDA3RwaaRRjTvCP4kQUjJE57w8VtyV
+- Buy of 0.01 SOL: https://explorer.solana.com/tx/2UTbiBntFeW2u8KjM3rxo2BeZ6FQGL656DGnPz4h2M4rXPF5JaHXMBSZ2n3bF6GeN945hJp8n9PRrcnBqUn8ZF8d
+- Sell of half the position: https://explorer.solana.com/tx/4yvKLxhircPtJ6ZtwFShogCF9xpYtNruMtLgfxmGb2xSzAPWv3CMXVQTV1ZXXyszTSJvuyFWf3BzaeePo1zKsUtc
+
+The theorem is not checked for truth. It is recorded on-chain exactly as the creator wrote it.
+
 ## Vercel Devnet beta
 
 The beta origin is `https://theorema.fun`. In Vercel Project Settings -> Environment Variables, configure the following for the deployment environment serving that domain:
