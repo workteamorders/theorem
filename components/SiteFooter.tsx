@@ -12,7 +12,7 @@ export function SiteFooter() {
       <div className="wrap">
         <div className="cols">
           <div><b style={{ color: '#fff' }}>THEOREMA</b><br />Coins backed by a theorem, on Solana.<br />Trades run on the pump.fun program.</div>
-          <div><Link href="/explore">Explore</Link><Link href="/launch">Launch</Link><Link href="/arcade">Arcade</Link><Link href="/risks">Risks and terms</Link></div>
+          <div><Link href="/explore">Explore</Link><Link href="/launch">Launch</Link><Link href="/arcade">Arcade</Link><Link href="/risks">Risks and terms</Link><a href="https://x.com/Theorem_pad" target="_blank" rel="noopener noreferrer">X · @Theorem_pad</a></div>
           <div>{RIGOR_ON ? 'Rigor scores are AI estimates, not proof checks.' : 'Theorem statements are written by coin creators and are not verified.'}<br />pump.fun is third-party software. Not financial advice. Coins can lose all their value.<br />{note}</div>
         </div>
         {IS_TEST && <div className="demo">Devnet beta. Coins and SOL here have no real value. Use a test wallet and free devnet SOL. Verification and rewards are not available.</div>}
