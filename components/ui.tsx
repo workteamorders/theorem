@@ -1,4 +1,5 @@
 'use client';
+import { TOKEN_CA } from '@/lib/token';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { PHASE, type Coin, type ChatMsg } from '@/lib/data';
@@ -58,6 +59,18 @@ export function CoinCard({ c, rank, vol }: { c: Coin; rank?: number; vol?: boole
         <span>{c.age} ago</span>
       </span>
     </Link>
+  );
+}
+
+export function CaBar() {
+  const app = useApp();
+  const copy = () => { void navigator.clipboard?.writeText(TOKEN_CA).catch(() => {}); app.toast('COPIED', 'Contract address copied.'); };
+  return (
+    <div className="ca-bar">
+      <span className="ca-tag">CA</span>
+      <code className="ca-addr" title={TOKEN_CA}><span className="ca-full">{TOKEN_CA}</span><span className="ca-short">{TOKEN_CA.slice(0, 6)}…{TOKEN_CA.slice(-6)}</span></code>
+      <button type="button" className="btn sm" onClick={copy} aria-label="Copy contract address">Copy</button>
+    </div>
   );
 }
 

@@ -4,7 +4,8 @@ import { useApp } from '@/lib/app';
 import { PUMP_PROGRAM_ID } from '@pump-fun/pump-sdk';
 import { addressUrl, NETWORK_NAME } from '@/lib/sol/config';
 import { sol } from '@/lib/util';
-import { BigCoin, CoinCard, GateNote } from '../ui';
+import { TOKEN_CA, TOKEN_PUMP_URL, TOKEN_SCAN_URL } from '@/lib/token';
+import { BigCoin, CaBar, CoinCard, GateNote } from '../ui';
 
 const STEPS = [
   ['01', 'Write the theorem', 'State a claim in math notation when you launch.', 'xⁿ + yⁿ = zⁿ has no solutions for n > 2.'],
@@ -38,6 +39,7 @@ export function HomeView() {
             <Link className="btn" href="/launch">▶ Press start · launch a coin</Link>
             <Link className="btn ghost" href="/explore">Explore coins</Link>
           </div>
+          <CaBar />
           <GateNote />
         </div>
         <div className="cabinet crt" aria-hidden="true">
@@ -77,6 +79,15 @@ export function HomeView() {
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             <button className="btn sm ghost" onClick={() => { void navigator.clipboard?.writeText(PUMP_PROGRAM_ID.toBase58()).catch(() => {}); app.toast('COPIED', 'Program address copied.'); }}>Copy</button>
             <a className="btn sm ghost" href={addressUrl(PUMP_PROGRAM_ID.toBase58())} target="_blank" rel="noopener noreferrer">Explorer</a>
+          </div>
+        </div>
+        <div className="screen contract" style={{ marginTop: 14 }}>
+          <div><div className="label">Token CA</div><div className="mono" style={{ fontWeight: 700, marginTop: 6 }}>Solana mainnet</div></div>
+          <code>{TOKEN_CA}</code>
+          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+            <button className="btn sm ghost" onClick={() => { void navigator.clipboard?.writeText(TOKEN_CA).catch(() => {}); app.toast('COPIED', 'Contract address copied.'); }}>Copy</button>
+            <a className="btn sm ghost" href={TOKEN_PUMP_URL} target="_blank" rel="noopener noreferrer">pump.fun</a>
+            <a className="btn sm ghost" href={TOKEN_SCAN_URL} target="_blank" rel="noopener noreferrer">Solscan</a>
           </div>
         </div>
       </section>
