@@ -14,6 +14,10 @@ export const rigorTier = (r: number | null) => (r == null ? 'lo' : r >= 85 ? 'hi
 export function RigorBadge({ r }: { r: number | null }) {
   return <span className={`badge ${rigorTier(r)}`} title="Rigor score. An AI estimate, not a proof check.">Σ {r == null ? '—' : r}</span>;
 }
+/** Honest default badge: the statement was recorded on Solana with the launch. It says nothing about truth. */
+export function RecordedBadge() {
+  return <span className="badge recorded" title="Statement recorded on Solana with the launch.">Σ ON-CHAIN</span>;
+}
 export function FormalBadge() {
   return <span className="badge formal" title="Formally verified with a Lean 4 proof">FORMAL ✓</span>;
 }
@@ -41,7 +45,7 @@ export function CoinCard({ c, rank, vol }: { c: Coin; rank?: number; vol?: boole
         <span className="cart-names"><b>${c.ticker}</b><span>{c.name}</span></span>
       </span>
       <span className="cart-badges">
-        {c.native ? (RIGOR_ON ? <RigorBadge r={c.rigor} /> : <span className="badge">THEOREM</span>) : <span className="badge">PUMP</span>}
+        {c.native ? (RIGOR_ON ? <RigorBadge r={c.rigor} /> : <RecordedBadge />) : <span className="badge">PUMP</span>}
       </span>
       <span className="cart-stmt">{c.native ? c.statement : c.blurb}</span>
       <span className="cart-row">

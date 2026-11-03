@@ -14,7 +14,7 @@ import { BN, PUMP_SDK, bondingCurvePda, lamportsOf, quoteBuy, quoteSell, rawOf, 
 import * as trade from '@/lib/sol/trade';
 import { SubmittedTransactionError, txError } from '@/lib/sol/errors';
 import { confirm, type Wallet } from '@/lib/sol/tx';
-import { HpBar, Msg, RigorBadge } from '../ui';
+import { HpBar, Msg, RecordedBadge, RigorBadge } from '../ui';
 import { Px } from '../Px';
 
 type Interval = '1m' | '5m' | '15m' | '1h' | '1d';
@@ -258,7 +258,7 @@ function TabPanel({ c, tab, trades }: { c: Coin; tab: string; trades: ReturnType
   return (
     <>
       <div className="theorem screen" style={{ boxShadow: 'none', borderWidth: '0 0 0 10px', borderColor: 'var(--coin)' }}><small>Theorem</small>{c.statement}</div>
-      {RIGOR_ON ? <p className="muted">Rigor <RigorBadge r={c.rigor} /> {c.rigor == null ? 'Not scored yet. Scores are AI estimates of how precisely a statement is written.' : `${c.rigorNote ? c.rigorNote + ' ' : ''}An AI estimate of how precisely the statement is written. It is not a proof check.`}</p> : <p className="muted">The creator wrote this statement and it is recorded on Solana with the launch. It has not been checked for truth.</p>}
+      {RIGOR_ON ? <p className="muted">Rigor <RigorBadge r={c.rigor} /> {c.rigor == null ? 'Not scored yet. Scores are AI estimates of how precisely a statement is written.' : `${c.rigorNote ? c.rigorNote + ' ' : ''}An AI estimate of how precisely the statement is written. It is not a proof check.`}</p> : <p className="muted"><RecordedBadge /> The creator wrote this statement and it is recorded on Solana with the launch. It has not been checked for truth.</p>}
     </>
   );
 }
@@ -301,7 +301,7 @@ function CoinPage({ c, iv, setIv, tab, setTab }: { c: Coin; iv: Interval; setIv:
               <h1>${c.ticker} <span className="muted" style={{ color: 'var(--hero-dim)', fontSize: '.6em' }}>{c.name}</span></h1>
               <div className="sub">{c.native ? c.statement : c.blurb}</div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center' }}>
-                {c.native && RIGOR_ON && <RigorBadge r={c.rigor} />}
+                {c.native && (RIGOR_ON ? <RigorBadge r={c.rigor} /> : <RecordedBadge />)}
                 <div className="share">
                   <button className="btn sm ghost" onClick={() => { void navigator.clipboard?.writeText(location.href).catch(() => {}); app.toast('COPIED', 'Link copied.'); }}>Copy link</button>
                   <a className="btn sm ghost" href={`https://x.com/intent/post?text=${encodeURIComponent('$' + c.ticker + ' on Theorema')}`} target="_blank" rel="noopener noreferrer">Post on X</a>

@@ -146,6 +146,7 @@ input:focus, select:focus, textarea:focus { outline: 3px dashed var(--coral); ou
 .badge { display: inline-flex; align-items: center; gap: 4px; font: 700 10px/1 var(--mono); letter-spacing: .5px; padding: 4px 6px; border: 2px solid var(--void); background: var(--cyan); color: var(--void); white-space: nowrap; }
 .badge.hi { background: var(--mint); } .badge.mid { background: var(--coin); } .badge.lo { background: #f3b1a8; }
 .badge.formal { background: var(--violet); }
+.badge.recorded { background: var(--cyan); }
 
 /* HP bar = graduation progress */
 .hp { display: grid; grid-template-columns: repeat(20, 1fr); gap: 2px; height: 12px; padding: 2px; background: var(--void); }
